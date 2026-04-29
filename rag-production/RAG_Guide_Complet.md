@@ -91,7 +91,7 @@ docker run --rm --gpus all nvidia/cuda:12.3.1-base-ubuntu22.04 nvidia-smi
 > Si `nvidia-smi` retourne les infos de votre GPU : OK.
 > Sinon : Docker Desktop -> Settings -> Resources -> WSL Integration -> activer Ubuntu.
 
-### 1.3 Python 3.11 ou 3.12
+### 1.3 Python 3.11 ou 3.12 ou 3.13
 
 ```powershell
 python --version
