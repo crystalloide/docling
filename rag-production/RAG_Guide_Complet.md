@@ -198,7 +198,7 @@ Arret propre si necessaire : `docker compose down`
 
 ---
 
-## Etape 5 — Ingerer vos PDFs
+## Etape 5 — Ingérer vos PDFs
 
 1. Copiez vos fichiers PDF dans `C:\rag-production\data\pdfs\`
 2. Lancez l'ingestion :
@@ -211,7 +211,7 @@ python -u ingest.py
 
 **Sortie attendue :**
 
-```
+```text
 ============================================================
   RAG Production -- Ingestion de PDFs
 ============================================================
