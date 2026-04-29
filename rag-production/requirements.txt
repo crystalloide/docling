@@ -1,0 +1,12 @@
+# RAG Production — dépendances Python
+# PyTorch CUDA : installé séparément (voir guide, étape 3.2)
+
+docling>=2.0.0
+qdrant-client>=1.9.0
+ollama>=0.4.0
+langchain-text-splitters>=0.3.0
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+requests>=2.31.0       # check_ollama() : vérification connexion Ollama au démarrage
+pypdf>=4.0.0           # get_pdf_page_count() : détection gros PDFs (évite bad_alloc)
+pymupdf>=1.23.0        # parse_with_pymupdf() : extraction texte pour gros PDFs (sans bad_alloc)
