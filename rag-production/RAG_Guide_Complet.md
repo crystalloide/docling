@@ -66,8 +66,10 @@ ollama --version
 Testez que le GPU est utilise :
 
 ```powershell
-ollama run llama3.1:8b "Reponds juste : GPU OK"
+#ollama run llama3.1:8b "Reponds juste : GPU OK"
 # La premiere fois : telecharge le modele (~4.7 Go)
+ollama run qwen3.5:27b "Reponds juste : GPU OK"
+# La premiere fois : telecharge le modele (~17 Go)
 ```
 
 ### 1.2 Docker Desktop + GPU NVIDIA
