@@ -22,7 +22,7 @@ PDFs (data/pdfs/)
  [Qdrant Docker]  -->  collection HNSW/COSINE persistante
       |
       v (recherche Top-K)
- [Ollama : llama3.1:8b]  -->  réponse streaming
+ [Ollama : qwen3.5:9b]  -->  réponse streaming
 ```
 
 | Composant | Outil | Rôle |
@@ -66,10 +66,16 @@ ollama --version
 Testez que le GPU est utilise :
 
 ```powershell
+# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
+
 #ollama run llama3.1:8b "Reponds juste : GPU OK"
 # La premiere fois : telecharge le modele (~4.7 Go)
-# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
-ollama run qwen3.5:27b "Reponds juste : GPU OK"
+
+# On choisit celui-ci pour commencer : 
+ollama run qwen3.5:9b "Reponds juste : GPU OK"
+# La premiere fois : telecharge le modele (~6,6 Go)
+
+#ollama run qwen3.5:27b "Reponds juste : GPU OK"
 # La premiere fois : telecharge le modele (~17 Go)
 ```
 
@@ -101,10 +107,10 @@ python --version
 #ollama pull llama3.1:8b
 
 # Modele LLM principal (environ 6.6 Go)
-#ollama pull qwen3.5:9b
+ollama pull qwen3.5:9b
 
 # Modele LLM principal (environ 17 Go)
-ollama pull qwen3.5:27b
+#ollama pull qwen3.5:27b
 
 # Modele d'embedding (environ 270 Mo)
 ollama pull nomic-embed-text
@@ -114,7 +120,7 @@ ollama list
 ```
 
 > **Alternative LLM** : pour une meilleure qualite de raisonnement (mais plus lent),
-> modifiez dans .env : `LLM_MODEL=qwen3:30b` puis `ollama pull qwen3:30b` (~18 Go).
+> modifiez dans .env : `LLM_MODEL=qwen3.5:27b` puis `ollama pull qwen3.5:27b` (~17 Go).
 
 ---
 
