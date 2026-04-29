@@ -1,1 +1,1 @@
-RAG avec docling Qdrant Qwen3.5
+RAG avec Docling Qdrant Qwen3.5
