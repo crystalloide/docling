@@ -249,9 +249,9 @@ les fichiers qdrant sont stockés dans le dossier que vous avez monté comme vol
 C:\rag-production\data\qdrant_storage\
 ```
 
-```
+```bash
 docker logs qdrant
-```text
+```
 
 
 > **Reprise automatique** : relancer `python ingest.py` ne retraite pas les fichiers
