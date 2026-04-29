@@ -317,7 +317,7 @@ Le fichier `.env` est le **seul point de configuration**. Aucun script a modifie
 
 | Variable | Defaut | Description |
 |---|---|---|
-| `LLM_MODEL` | `llama3.1:8b` | Remplacer par `qwen3:30b` pour plus de qualite |
+| `LLM_MODEL` | `llama3.1:8b` | Remplacer par `qwen3.5:27b` pour plus de qualite |
 | `EMBED_MODEL` | `nomic-embed-text` | Remplacer par `bge-m3` + `EMBED_DIM=1024` |
 | `CHUNK_SIZE` | `512` | Augmenter pour des documents tres structures |
 | `CHUNK_OVERLAP` | `64` | Augmenter si les reponses manquent de contexte |
