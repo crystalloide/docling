@@ -97,7 +97,10 @@ python --version
 
 ```powershell
 # Modele LLM principal (environ 4.7 Go)
-ollama pull llama3.1:8b
+#ollama pull llama3.1:8b
+
+# Modele LLM principal (environ 17 Go)
+ollama pull qwen3.5:27b
 
 # Modele d'embedding (environ 270 Mo)
 ollama pull nomic-embed-text
