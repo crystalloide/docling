@@ -68,6 +68,7 @@ Testez que le GPU est utilise :
 ```powershell
 #ollama run llama3.1:8b "Reponds juste : GPU OK"
 # La premiere fois : telecharge le modele (~4.7 Go)
+# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
 ollama run qwen3.5:27b "Reponds juste : GPU OK"
 # La premiere fois : telecharge le modele (~17 Go)
 ```
@@ -98,6 +99,9 @@ python --version
 ```powershell
 # Modele LLM principal (environ 4.7 Go)
 #ollama pull llama3.1:8b
+
+# Modele LLM principal (environ 6.6 Go)
+#ollama pull qwen3.5:9b
 
 # Modele LLM principal (environ 17 Go)
 ollama pull qwen3.5:27b
