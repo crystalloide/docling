@@ -22,7 +22,11 @@ PDFs (data/pdfs/)
  [Qdrant Docker]  -->  collection HNSW/COSINE persistante
       |
       v (recherche Top-K)
- [Ollama : qwen3.5:9b]  -->  réponse streaming
+	  
+ [Ollama : qwen3.5:9b]   		-->  réponse streaming
+ [Ollama : qwen2.5:7b]  		-->  réponse streaming
+ [Ollama : llama3.1:8b]  		-->  réponse streaming
+ [Ollama : mistral-nemo:12b]  	-->  réponse streaming
 ```
 
 | Composant | Outil | Rôle |
@@ -67,16 +71,61 @@ Ouvrez un **terminal PowerShell** :
 ollama --version
 ```
 
-Testez que le GPU est utilise :
+Testez que le GPU est utilisé :
 
 ```powershell
-# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
+
+
+# Comparatif des Modèles Équivalents à Llama 3.1 8B
+
+Ce document présente une analyse comparative des principaux Large Language Models (LLM) de taille moyenne qui rivalisent avec le Llama 3.1 8B de Meta.
+
+## Tableau Récapitulatif
+
+| Modèle | Paramètres | Fenêtre de contexte | Spécialité |
+| :--- | :--- | :--- | :--- |
+| **Llama 3.1 8B** | 8B | 128k | Polyvalence & Écosystème |
+| **Gemma 2 9B** | 9B | 8k | Logique & Nuances |
+| **Mistral NeMo** | 12B | 128k | Français & Multilingue |
+| **Qwen 2.5 7B** | 7B | 128k | Code & Mathématiques |
+| **Phi-3.5 Mini** | 3.8B | 128k | Vitesse & Appareils mobiles |
+
+---
+
+## Analyse par Modèle
+
+### 1. Llama 3.1 8B (Meta)
+Le standard actuel. Il bénéficie de l'écosystème le plus vaste (compatible avec presque tous les outils comme Ollama, LM Studio, etc.). Sa fenêtre de contexte de 128k est un atout majeur pour traiter de longs documents.
+
+### 2. Gemma 2 9B (Google)
+Basé sur la technologie des modèles Gemini. Il excelle dans le raisonnement pur et offre une qualité de rédaction souvent jugée supérieure (moins de répétitions, style plus fluide). Son point faible reste sa fenêtre de contexte plus limitée (8k).
+
+### 3. Mistral NeMo 12B (Mistral AI & NVIDIA)
+Fruit d'une collaboration entre le leader européen et le géant des puces. Avec ses 12 milliards de paramètres, il est plus "intelligent" sur les nuances linguistiques, particulièrement en français, et gère parfaitement les contextes longs.
+
+### 4. Qwen 2.5 7B (Alibaba)
+C'est le modèle qui domine les benchmarks techniques. Si votre besoin concerne la génération de code (Python, C++, etc.) ou la résolution de problèmes mathématiques complexes, c'est l'alternative la plus robuste.
+
+### 5. Phi-3.5 Mini (Microsoft)
+La preuve que la taille ne fait pas tout. Ce modèle est extrêmement optimisé. Il est idéal pour être déployé localement sur des machines avec peu de RAM ou pour des applications nécessitant une latence minimale tout en conservant un bon niveau de compréhension.
+
+
+
+# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen2.5
+
+# On choisit celui-ci pour commencer : 
+ollama run mistral-nemo:12b "Reponds juste : 'GPU OK'"
+# La premiere fois : telecharge le modele (~7,1 Go)
 
 #ollama run llama3.1:8b "Reponds juste : GPU OK"
 # La premiere fois : telecharge le modele (~4.7 Go)
 
 # On choisit celui-ci pour commencer : 
-ollama run qwen3.5:9b "Reponds juste : GPU OK"
+#ollama run qwen2.5:7b "Reponds juste : GPU OK"
+# La premiere fois : telecharge le modele (~4,7 Go)
+
+# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
+#ollama run qwen3.5:9b "Reponds juste : GPU OK"
 # La premiere fois : telecharge le modele (~6,6 Go)
 
 #ollama run qwen3.5:27b "Reponds juste : GPU OK"
@@ -396,6 +445,29 @@ Question : quit
 Au revoir !
 ```
 
+#### Vous pouvez utiliser deux syntaxes :
+
+##### Sans filtre (comportement par défaut — tous les fichiers) :
+❓ Question : 
+```question
+règles du Code de la mutualité
+```
+
+##### Avec filtre (cherche uniquement dans un fichier précis) :
+❓ Question :
+
+Pour afficher la liste complète avec les noms exacts à copier-coller dans vos @"...".
+(attention, c'est long !!!) 
+```question
+ sources
+```
+
+```question
+ @"Code de la mutualité.pdf" quelles sont les règles en synthèse ?
+```
+
+Et la commande sources affiche la liste complète avec les noms exacts à copier-coller dans vos @"...".
+
 ---
 
 ## Etape 7 — Ajout continu de PDFs (usage quotidien)
@@ -427,6 +499,36 @@ Le fichier `.env` est le **seul point de configuration**. Aucun script a modifie
 > et de reingerer tous les PDFs. Supprimez `data/qdrant_storage/` et relancez `ingest.py`.
 
 ---
+
+## Etape 8 — Vérifier l'indexation 
+
+```powershell
+cd C:\rag-production
+.venv\Scripts\Activate.ps1
+python check_index.py
+```
+
+##### Exemple en retour (long) : 
+
+```powershell
+Fichier                                                        Chunks
+----------------------------------------------------------------------
+Code civil.pdf                                                   2947
+Code de commerce.pdf                                             9536
+Code de déontologie des architectes.pdf                            59
+Code de l'aviation civile.pdf                                      88
+Code de la famille et de l'aide sociale.pdf                        24
+Code de la mutualité.pdf                                         1120
+Code des instruments monétaires et des médailles.pdf               16
+Code des pensions de retraite des marins français du commerce, de pêche ou de plaisance.pdf       40
+Code disciplinaire et pénal de la marine marchande.pdf             16
+Code du domaine de l'Etat et des collectivités publiques applicable à la collectivité territoriale de Mayotte.pdf       14
+Code du domaine public fluvial et de la navigation intérieure.pdf        9
+Code du tourisme.pdf                                             1052
+
+Total : 14921 vecteurs dans 12 fichiers
+```
+
 
 ## Resolution des problemes
 
