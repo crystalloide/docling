@@ -381,6 +381,7 @@ powershellnvidia-smi --query-gpu=timestamp,name,utilization.gpu,utilization.memo
 
 💡 Fonctionne aussi depuis l'intérieur d'un conteneur Docker si vous passez --gpus all.
 
+<img width="2151" height="514" alt="image" src="https://github.com/user-attachments/assets/a4a6dc03-9c17-4a87-b899-53fd11bddea6" />
 
 ### ✅ Option 2 — nvitop (recommandé pour le dev)
 
