@@ -77,7 +77,7 @@ Testez que le GPU est utilisé :
 
 ```
 
-# Comparatif des Modèles Équivalents à Llama 3.1 8B
+## Comparatif des Modèles Équivalents à Llama 3.1 8B
 
 Ce document présente une analyse comparative des principaux Large Language Models (LLM) de taille moyenne qui rivalisent avec le Llama 3.1 8B de Meta.
 
@@ -114,33 +114,37 @@ La preuve que la taille ne fait pas tout. Ce modèle est extrêmement optimisé.
 
 
 
-# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen2.5
+### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen2.5
 
-# On choisit celui-ci pour commencer : 
+### On choisit celui-ci pour commencer : 
+```powershell
 ollama run mistral-nemo:12b "Reponds juste : 'GPU OK'"
-# La premiere fois : telecharge le modele (~7,1 Go)
+```
+### La premiere fois : telecharge le modele (~7,1 Go)
 
 #ollama run llama3.1:8b "Reponds juste : GPU OK"
-# La premiere fois : telecharge le modele (~4.7 Go)
+### La premiere fois : telecharge le modele (~4.7 Go)
 
-# On choisit celui-ci pour commencer : 
+### On choisit celui-ci pour commencer : 
 #ollama run qwen2.5:7b "Reponds juste : GPU OK"
-# La premiere fois : telecharge le modele (~4,7 Go)
+### La premiere fois : telecharge le modele (~4,7 Go)
 
-# Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
+### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
 #ollama run qwen3.5:9b "Reponds juste : GPU OK"
-# La premiere fois : telecharge le modele (~6,6 Go)
+### La premiere fois : telecharge le modele (~6,6 Go)
 
 #ollama run qwen3.5:27b "Reponds juste : GPU OK"
-# La premiere fois : telecharge le modele (~17 Go)
+### La premiere fois : telecharge le modele (~17 Go)
 ```
 
-### 1.2 Docker Desktop + GPU NVIDIA
+#### 1.2 Docker Desktop + GPU NVIDIA
 
 ```powershell
 docker version
+```
 
-# Tester le passthrough GPU NVIDIA dans Docker
+#### Tester le passthrough GPU NVIDIA dans Docker
+```powershell
 docker run --rm --gpus all nvidia/cuda:12.3.1-base-ubuntu22.04 nvidia-smi
 ```
 
