@@ -83,15 +83,15 @@ Ce document présente une analyse comparative des principaux Large Language Mode
 
 ## Tableau récapitulatif :
 
- -------------------|---------------|-----------------------|------------------------------- 
+
 | Modèle			| Paramètres 	| Fenêtre de contexte 	| Spécialité					|
-|-------------------|---------------|-----------------------|-------------------------------|
+|---|---|---|-----|
 | **Llama 3.1 8B**	| 8B 			| 128k					| Polyvalence & Écosystème 		|
 | **Gemma 2 9B** 	| 9B 			| 8k 					| Logique & Nuances 			|
 | **Mistral NeMo** 	| 12B 			| 128k					| Français & Multilingue 		|
 | **Qwen 2.5 7B** 	| 7B 			| 128k					| Code & Mathématiques 			|
 | **Phi-3.5 Mini** 	| 3.8B			| 128k 					| Vitesse & Appareils mobiles	|
- -------------------|---------------|-----------------------|------------------------------- 
+
 
 ---
 
