@@ -374,14 +374,15 @@ docker logs qdrant
 
 ### ✅ Option 1 pour suivre l'activité sur la carte GPU : 
 
-##### Pour un affichage continu et lisible :
+##### Pour un affichage continu et lisible : (en powershell)
 ```bash
-powershellnvidia-smi --query-gpu=timestamp,name,utilization.gpu,utilization.memory,memory.used,memory.free,temperature.gpu --format=csv -l 1
+nvidia-smi --query-gpu=timestamp,name,utilization.gpu,utilization.memory,memory.used,memory.free,temperature.gpu --format=csv -l 1
 ```
+<img width="1315" height="178" alt="image" src="https://github.com/user-attachments/assets/5c019631-b70a-40e0-90b0-c0a07957877b" />
+
 
 💡 Fonctionne aussi depuis l'intérieur d'un conteneur Docker si vous passez --gpus all.
 
-<img width="2151" height="514" alt="image" src="https://github.com/user-attachments/assets/a4a6dc03-9c17-4a87-b899-53fd11bddea6" />
 
 ### ✅ Option 2 — nvitop (recommandé pour le dev)
 
@@ -391,7 +392,7 @@ pip install nvitop
 nvitop
 ```
 
-
+<img width="2151" height="514" alt="image" src="https://github.com/user-attachments/assets/a4a6dc03-9c17-4a87-b899-53fd11bddea6" />
 
 ### ✅ Option 3 pour vérifier la charge pendant l'ingestion :
 ```bash
