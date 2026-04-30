@@ -312,48 +312,65 @@ python -u ingest.py
 
 ```text
 ============================================================
-  RAG Production -- Ingestion de PDFs
+  RAG Production — Ingestion de PDFs
 ============================================================
 [Ollama] ✅ Connecté — modèle embedding : nomic-embed-text
 [Docling] GPU : NVIDIA GeForce RTX 3090 (24.0 Go VRAM)
 [Docling] ✅ GPU CUDA activé (OCR activé)
-[Qdrant] Collection 'prod_documents' créée (768 dims, COSINE)
+[Chunker] ✅ HybridChunker — tokenizer nomic-embed-text, max 384 tokens/chunk
+[Qdrant] Collection 'prod_documents' existante — 16630 vecteurs
 
-📂 8 PDF(s) trouvé(s)
-   ↳ 0 déjà indexé(s), 8 à traiter
+📂 12 PDF(s) trouvé(s)
+   ↳ 5 déjà indexé(s), 7 à traiter
 
-[1/8] 🔄 Code de déontologie des architectes.pdf
-       ℹ  23 pages → Docling GPU direct
-Loading weights: 100%|█████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 1250.46it/s]
-       ✅ 59 vecteurs indexés
-[2/8] 🔄 Code de l'aviation civile.pdf
-       ℹ  35 pages → Docling GPU direct
-       ✅ 88 vecteurs indexés
-[3/8] 🔄 Code de la famille et de l'aide sociale.pdf
-       ℹ  12 pages → Docling GPU direct
-       ✅ 24 vecteurs indexés
-[4/8] 🔄 Code des instruments monétaires et des médailles.pdf
-       ℹ  9 pages → Docling GPU direct
-       ✅ 16 vecteurs indexés
-[5/8] 🔄 Code des pensions de retraite des marins français du commerce, de pêche ou de plaisance.pdf
-       ℹ  18 pages → Docling GPU direct
-       ✅ 40 vecteurs indexés
-[6/8] 🔄 Code disciplinaire et pénal de la marine marchande.pdf
-       ℹ  10 pages → Docling GPU direct
-       ✅ 16 vecteurs indexés
-[7/8] 🔄 Code du domaine de l'Etat et des collectivités publiques applicable à la collectivité territoriale de Mayotte.pdf
-       ℹ  8 pages → Docling GPU direct
-       ✅ 14 vecteurs indexés
-[8/8] 🔄 Code du domaine public fluvial et de la navigation intérieure.pdf
-       ℹ  8 pages → Docling GPU direct
-       ✅ 9 vecteurs indexés
-
+[1/7] 🔄 Code de la mutualité.pdf
+       ℹ  210 pages → 5 tranches de 50 (Docling GPU + HybridChunker)
+  Tranches (210 pages):   0%|                                                                                                                                                                                                                             | 0/5 [00:00<?, ?it/s][INFO] 2026-04-30 16:16:40,198 [RapidOCR] base.py:22: Using engine_name: torch
+[INFO] 2026-04-30 16:16:40,204 [RapidOCR] device_config.py:64: Using GPU device with ID: 0
+[INFO] 2026-04-30 16:16:40,215 [RapidOCR] download_file.py:60: File exists and is valid: C:\rag-production\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_det_mobile.pth
+[INFO] 2026-04-30 16:16:40,216 [RapidOCR] main.py:50: Using C:\rag-production\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_det_mobile.pth
+[INFO] 2026-04-30 16:16:40,721 [RapidOCR] base.py:22: Using engine_name: torch
+[INFO] 2026-04-30 16:16:40,721 [RapidOCR] device_config.py:64: Using GPU device with ID: 0
+[INFO] 2026-04-30 16:16:40,723 [RapidOCR] download_file.py:60: File exists and is valid: C:\rag-production\.venv\Lib\site-packages\rapidocr\models\ch_ptocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-04-30 16:16:40,723 [RapidOCR] main.py:50: Using C:\rag-production\.venv\Lib\site-packages\rapidocr\models\ch_ptocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-04-30 16:16:40,797 [RapidOCR] base.py:22: Using engine_name: torch
+[INFO] 2026-04-30 16:16:40,797 [RapidOCR] device_config.py:64: Using GPU device with ID: 0
+[INFO] 2026-04-30 16:16:40,816 [RapidOCR] download_file.py:60: File exists and is valid: C:\rag-production\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_rec_mobile.pth
+[INFO] 2026-04-30 16:16:40,816 [RapidOCR] main.py:50: Using C:\rag-production\.venv\Lib\site-packages\rapidocr\models\ch_PP-OCRv4_rec_mobile.pth
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 4318.27it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (93234 > 8192). Running this sequence through the model will result in indexing errors                                     | 408/770 [00:00<00:00, 4077.53it/s]
+       ℹ  1461 chunks extraits par HybridChunker
+       ✅ 1461 vecteurs indexés
+[2/7] 🔄 Code des instruments monétaires et des médailles.pdf
+       ℹ  9 pages → Docling GPU direct + HybridChunker
+       ℹ  17 chunks extraits par HybridChunker
+       ✅ 17 vecteurs indexés
+[3/7] 🔄 Code des pensions de retraite des marins français du commerce, de pêche ou de plaisance.pdf
+       ℹ  18 pages → Docling GPU direct + HybridChunker
+       ℹ  60 chunks extraits par HybridChunker
+       ✅ 60 vecteurs indexés
+[4/7] 🔄 Code disciplinaire et pénal de la marine marchande.pdf
+       ℹ  10 pages → Docling GPU direct + HybridChunker
+       ℹ  18 chunks extraits par HybridChunker
+       ✅ 18 vecteurs indexés
+[5/7] 🔄 Code du domaine de l'Etat et des collectivités publiques applicable à la collectivité territoriale de Mayotte.pdf
+       ℹ  8 pages → Docling GPU direct + HybridChunker
+       ℹ  19 chunks extraits par HybridChunker
+       ✅ 19 vecteurs indexés
+[6/7] 🔄 Code du domaine public fluvial et de la navigation intérieure.pdf
+       ℹ  8 pages → Docling GPU direct + HybridChunker
+       ℹ  15 chunks extraits par HybridChunker
+       ✅ 15 vecteurs indexés
+[7/7] 🔄 Code du tourisme.pdf
+       ℹ  192 pages → 4 tranches de 50 (Docling GPU + HybridChunker)
+  Tranches (192 pages):   0%|                                                                                                                                              Tranches (192 pages):  25%|█████████████████████████████████████████████████████                                                                                         Tranches (192 pages):  50%|██████████████████████████████████████████████████████████████████████████████████████████████████████████                                    Tranches (192 pages):  75%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████  Tranches (192 pages): 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                                                                                                                                ℹ  1686 chunks extraits par HybridChunker
+       ✅ 1686 vecteurs indexés
 
 ============================================================
 ✅ Ingestion terminée
-   Fichiers traités : 8/8
-   Vecteurs insérés : 266
-   Total en base    : 266 vecteurs
+   Fichiers traités : 7/7
+   Vecteurs insérés : 3276
+   Total en base    : 19906 vecteurs
 ============================================================
 ```
 
