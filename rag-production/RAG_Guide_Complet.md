@@ -1,4 +1,4 @@
-# Mode Opératoire Complet — Stack RAG Production
+# Mode opératoire complet — Stack RAG Production
 
 > **Environnement** : Windows 11 · 64 Go RAM · 16 cœurs · GPU NVIDIA 24 Go VRAM · Ollama installé · Docker Desktop installé
 
