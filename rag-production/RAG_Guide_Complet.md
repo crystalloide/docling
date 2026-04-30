@@ -75,6 +75,7 @@ Testez que le GPU est utilisé :
 
 ```powershell
 
+```
 
 # Comparatif des Modèles Équivalents à Llama 3.1 8B
 
