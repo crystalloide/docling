@@ -583,3 +583,93 @@ Total : 14921 vecteurs dans 12 fichiers
 Pour passer a un deploiement multi-noeuds sans modifier `ingest.py` ni `query.py`,
 remplacez simplement `QDRANT_URL` dans `.env` par l'URL du load balancer du cluster.
 Le code Python est identique : Qdrant gere le sharding et la replication de facon transparente.
+
+
+
+
+### Exemple d'intéraction : 
+```powershell
+(.venv) PS C:\rag-production> python query.py
+============================================================
+  RAG Production — Recherche interactive
+  LLM      : mistral-nemo:12b
+  Embedding: nomic-embed-text  |  Top-K: 15
+============================================================
+[Qdrant] Collection 'prod_documents' — 32840 vecteurs
+
+  Commandes disponibles :
+    sources          → liste les fichiers indexés avec leur nombre de chunks
+    stats            → nombre total de vecteurs en base
+    quit / q         → quitter
+
+  Filtre par fichier (évite les confusions entre codes) :
+    @"Code de la mutualité.pdf" quelles sont les règles ?
+    @Code_civil.pdf  qu'est-ce que la responsabilité civile ?
+
+❓ Question : qu'est ce qu'est la responsabilité civile ?
+
+🔎 Recherche des passages pertinents...
+
+🤖 Génération (streaming — mistral-nemo:12b)...
+
+📎 Sources utilisées :
+   • Code civil.pdf (chunk 1602, similarité 0.851)
+   • Code civil.pdf (chunk 1688, similarité 0.848)
+   • Code civil.pdf (chunk 2361, similarité 0.825)
+   • Code civil.pdf (chunk 2243, similarité 0.816)
+   • Code civil.pdf (chunk 2372, similarité 0.798)
+   • Code civil.pdf (chunk 2237, similarité 0.778)
+   • Code de justice militaire (nouveau).pdf (chunk 395, similarité 0.777)
+   • Code de la justice pénale des mineurs.pdf (chunk 810, similarité 0.774)
+   • Code civil.pdf (chunk 3366, similarité 0.769)
+   • Code de justice militaire (nouveau).pdf (chunk 387, similarité 0.769)
+   • Code civil.pdf (chunk 3725, similarité 0.769)
+   • Code civil.pdf (chunk 1430, similarité 0.768)
+   • Code civil.pdf (chunk 4572, similarité 0.767)
+   • Code de commerce.pdf (chunk 2402, similarité 0.766)
+   • Code de l'expropriation pour cause d'utilité publique.pdf (chunk 657, similarité 0.766)
+
+────────────────────────────────────────────────────────────
+La responsabilité civile est une notion juridique qui définit l'obligation pour un individu ou une entité de réparer le dommage causé à un tiers par sa propre faute. Cette obligation peut être engagée en cas de dommage matériel, moral ou corporel, causé à autrui par le fait du responsable.
+
+La responsabilité civile peut être engagée dans divers domaines tels que la route (responsabilité civile automobile), la vie privée (responsabilité civile du particulier), la vie professionnelle (responsabilité civile des entreprises) etc.
+
+En France, la loi dispose que toute personne qui a causé un dommage à autrui, par sa faute ou celle de ses préposés, est tenue de réparer ce dommage. La réparation peut prendre différentes formes : dommages-intérêts, remise en état, fourniture d'une chose équivalente etc.
+
+Il convient également de noter que la responsabilité civile peut être limitée ou exclue dans certains cas prévus par la loi (exemple : clause limitative de responsabilité).
+────────────────────────────────────────────────────────────
+
+❓ Question : sources
+
+📚 25 fichiers indexés :
+    1. Code civil.pdf  (5014 chunks)
+    2. Code de commerce.pdf  (11359 chunks)
+    3. Code de déontologie des architectes.pdf  (93 chunks)
+    4. Code de justice militaire (nouveau).pdf  (899 chunks)
+    5. Code de l'artisanat.pdf  (1622 chunks)
+    6. Code de l'aviation civile.pdf  (130 chunks)
+    7. Code de l'expropriation pour cause d'utilité publique.pdf  (830 chunks)
+    8. Code de la Légion d'honneur, de la Médaille militaire et de l'ordre national du Mérite.pdf  (412 chunks)
+    9. Code de la famille et de l'aide sociale.pdf  (34 chunks)
+   10. Code de la justice pénale des mineurs.pdf  (1278 chunks)
+   11. Code de la mutualité.pdf  (1461 chunks)
+   12. Code de la voirie routière.pdf  (1093 chunks)
+   13. Code des communes.pdf  (377 chunks)
+   14. Code des douanes.pdf  (1294 chunks)
+   15. Code des instruments monétaires et des médailles.pdf  (17 chunks)
+   16. Code des pensions civiles et militaires de retraite.pdf  (571 chunks)
+   17. Code des pensions de retraite des marins français du commerce, de pêche ou de plaisance.pdf  (60 chunks)
+   18. Code des relations entre le public et l'administration.pdf  (1103 chunks)
+   19. Code disciplinaire et pénal de la marine marchande.pdf  (18 chunks)
+   20. Code du domaine de l'Etat et des collectivités publiques applicable à la collectivité territoriale de Mayotte.pdf  (19 chunks)
+   21. Code du domaine de l'Etat.pdf  (1390 chunks)
+   22. Code du domaine public fluvial et de la navigation intérieure.pdf  (15 chunks)
+   23. Code du tourisme.pdf  (1686 chunks)
+   24. Code minier (nouveau).pdf  (1810 chunks)
+   25. Code minier.pdf  (255 chunks)
+
+❓ Question : quit
+Au revoir !
+```
+
+Have Fun !
