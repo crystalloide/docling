@@ -113,8 +113,7 @@ C'est le modèle qui domine les benchmarks techniques. Si votre besoin concerne 
 La preuve que la taille ne fait pas tout. Ce modèle est extrêmement optimisé. Il est idéal pour être déployé localement sur des machines avec peu de RAM ou pour des applications nécessitant une latence minimale tout en conservant un bon niveau de compréhension.
 
 
-
-### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen2.5
+#### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen2.5
 
 ### On choisit celui-ci pour commencer : 
 ```powershell
