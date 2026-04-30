@@ -495,6 +495,7 @@ Pour afficher la liste complète avec les noms exacts à copier-coller dans vos 
 Et la commande sources affiche la liste complète avec les noms exacts à copier-coller dans vos @"...".
 
 ---
+<img width="621" height="286" alt="image" src="https://github.com/user-attachments/assets/a41f2723-50e2-4837-95d9-c9e1271b66ed" />
 
 ## Etape 7 — Ajout continu de PDFs (usage quotidien)
 
