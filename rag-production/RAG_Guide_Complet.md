@@ -280,6 +280,7 @@ qdrant    Up X seconds (healthy)
 ```
 
 Interface Web Qdrant : **http://localhost:6333/dashboard**
+<img width="2541" height="673" alt="image" src="https://github.com/user-attachments/assets/ee61b0fe-786e-483a-9594-20b6c6c9b967" />
 
 Arret propre si necessaire : `docker compose down`
 
