@@ -308,6 +308,12 @@ cd C:\rag-production
 python -u ingest.py
 ```
 
+##### Important : ne tenez pas compte du message suivant : (la gestion en interne est faite correctement, il y a redécoupage en chunk)
+
+```powershell
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (12114 > 8192). Running this sequence through the model will result in indexing errors
+```
+
 **Sortie attendue :**
 
 ```text
