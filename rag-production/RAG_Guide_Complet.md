@@ -167,6 +167,7 @@ Thu Apr 30 08:26:47 2026
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
 ```
+https://github.com/crystalloide/docling/blob/6f9eff2c2206b65cb7145afd399202ab7c9d57de/rag-production/Suivi%20charge%20GPU.png
 
 ### 1.3 Python 3.11 ou 3.12 ou 3.13
 
