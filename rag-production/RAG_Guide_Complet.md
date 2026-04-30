@@ -81,7 +81,7 @@ Testez que le GPU est utilisé :
 Ce document présente une analyse comparative des principaux Large Language Models (LLM) de taille moyenne qui rivalisent avec le Llama 3.1 8B de Meta.
 
 ## Tableau Récapitulatif
-
+```text
 | Modèle | Paramètres | Fenêtre de contexte | Spécialité |
 | :--- | :--- | :--- | :--- |
 | **Llama 3.1 8B** | 8B | 128k | Polyvalence & Écosystème |
@@ -89,7 +89,7 @@ Ce document présente une analyse comparative des principaux Large Language Mode
 | **Mistral NeMo** | 12B | 128k | Français & Multilingue |
 | **Qwen 2.5 7B** | 7B | 128k | Code & Mathématiques |
 | **Phi-3.5 Mini** | 3.8B | 128k | Vitesse & Appareils mobiles |
-
+```
 ---
 
 ## Analyse par Modèle
