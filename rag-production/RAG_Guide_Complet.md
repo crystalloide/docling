@@ -281,8 +281,9 @@ docker compose ps
 Attendu :
 
 ```
-NAME      STATUS
-qdrant    Up X seconds (healthy)
+(.venv) PS C:\rag-production> docker ps -a
+CONTAINER ID   IMAGE                                COMMAND             CREATED       STATUS                     PORTS                                                             NAMES
+a0762db01b6e   qdrant/qdrant:latest                 "./entrypoint.sh"   3 hours ago   Up 3 min                 0.0.0.0:6333-6334->6333-6334/tcp, [::]:6333-6334->6333-6334/tcp   qdrant
 ```
 
 Interface Web Qdrant : **http://localhost:6333/dashboard**
