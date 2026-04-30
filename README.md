@@ -1,3 +1,2 @@
-RAG avec Docling Qdrant Qwen3.5
+RAG avec Docling Qdrant mistral-nemo:12b
 
-rag-production/Suivi charge GPU.png
