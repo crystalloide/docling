@@ -374,15 +374,10 @@ Loading weights: 100%|███████████████████�
 ============================================================
 ```
 
-```powershell
-Invoke-RestMethod http://localhost:6333/collections/prod_documents
-```
-
-Et lisez directement le résultat affiché — cherchez points_count ou indexed_vectors_count dans l'output.
+##### Pour voir les points insérés dans Qdrant : Dans le navigateur web 
 
 ```text
-Ou encore plus simple, directement dans le navigateur : http://localhost:6333/collections/prod_documents 
-— le JSON s'affiche proprement et vous voyez tous les champs disponibles d'un coup.
+http://localhost:6333/collections/prod_documents
 ```
 
 ```text
