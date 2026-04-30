@@ -55,6 +55,10 @@ C:\rag-production\
 
 ## Etape 1 — Verifier les prerequis
 
+### 1.0 Docker Desktop 
+
+Lancer **Docker Desktop** et vérifier que des conteneurs sans lien avec le projet ne sont pas déjà en train de s'exécuter:
+
 ### 1.1 Ollama + GPU
 
 Ouvrez un **terminal PowerShell** :
@@ -90,6 +94,30 @@ docker run --rm --gpus all nvidia/cuda:12.3.1-base-ubuntu22.04 nvidia-smi
 
 > Si `nvidia-smi` retourne les infos de votre GPU : OK.
 > Sinon : Docker Desktop -> Settings -> Resources -> WSL Integration -> activer Ubuntu.
+
+##### Exemple ok :   
+```text
+Thu Apr 30 08:26:47 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.57                 Driver Version: 591.86         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        On  |   00000000:0C:00.0  On |                  N/A |
+|  0%   48C    P2            110W /  370W |    1587MiB /  24576MiB |      5%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+```
 
 ### 1.3 Python 3.11 ou 3.12 ou 3.13
 
@@ -225,20 +253,46 @@ python -u ingest.py
 ============================================================
   RAG Production -- Ingestion de PDFs
 ============================================================
-[Docling] OK GPU CUDA active
-[Qdrant] Collection 'prod_documents' creee (768 dims, COSINE)
+[Ollama] ✅ Connecté — modèle embedding : nomic-embed-text
+[Docling] GPU : NVIDIA GeForce RTX 3090 (24.0 Go VRAM)
+[Docling] ✅ GPU CUDA activé (OCR activé)
+[Qdrant] Collection 'prod_documents' créée (768 dims, COSINE)
 
-3 PDF(s) trouves
-   2 deja indexes, 1 a traiter
+📂 8 PDF(s) trouvé(s)
+   ↳ 0 déjà indexé(s), 8 à traiter
 
-[1/1] rapport_2024.pdf
-       OK 87 vecteurs indexes
+[1/8] 🔄 Code de déontologie des architectes.pdf
+       ℹ  23 pages → Docling GPU direct
+Loading weights: 100%|█████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 1250.46it/s]
+       ✅ 59 vecteurs indexés
+[2/8] 🔄 Code de l'aviation civile.pdf
+       ℹ  35 pages → Docling GPU direct
+       ✅ 88 vecteurs indexés
+[3/8] 🔄 Code de la famille et de l'aide sociale.pdf
+       ℹ  12 pages → Docling GPU direct
+       ✅ 24 vecteurs indexés
+[4/8] 🔄 Code des instruments monétaires et des médailles.pdf
+       ℹ  9 pages → Docling GPU direct
+       ✅ 16 vecteurs indexés
+[5/8] 🔄 Code des pensions de retraite des marins français du commerce, de pêche ou de plaisance.pdf
+       ℹ  18 pages → Docling GPU direct
+       ✅ 40 vecteurs indexés
+[6/8] 🔄 Code disciplinaire et pénal de la marine marchande.pdf
+       ℹ  10 pages → Docling GPU direct
+       ✅ 16 vecteurs indexés
+[7/8] 🔄 Code du domaine de l'Etat et des collectivités publiques applicable à la collectivité territoriale de Mayotte.pdf
+       ℹ  8 pages → Docling GPU direct
+       ✅ 14 vecteurs indexés
+[8/8] 🔄 Code du domaine public fluvial et de la navigation intérieure.pdf
+       ℹ  8 pages → Docling GPU direct
+       ✅ 9 vecteurs indexés
+
 
 ============================================================
-OK Ingestion terminee
-   Fichiers traites : 1/1
-   Vecteurs inseres : 87
-   Total en base    : 87 vecteurs
+✅ Ingestion terminée
+   Fichiers traités : 8/8
+   Vecteurs insérés : 266
+   Total en base    : 266 vecteurs
 ============================================================
 ```
 
@@ -262,6 +316,27 @@ C:\rag-production\data\qdrant_storage\
 ```bash
 docker logs qdrant
 ```
+
+
+### ✅ Option 1 pour suivre l'activité sur la carte GPU : 
+
+##### Pour un affichage continu et lisible :
+```bash
+powershellnvidia-smi --query-gpu=timestamp,name,utilization.gpu,utilization.memory,memory.used,memory.free,temperature.gpu --format=csv -l 1
+```
+
+💡 Fonctionne aussi depuis l'intérieur d'un conteneur Docker si vous passez --gpus all.
+
+
+### ✅ Option 2 — nvitop (recommandé pour le dev)
+
+##### htop pour GPU, très lisible dans le terminal :
+```bash
+pip install nvitop
+nvitop
+```
+
+
 
 
 > **Reprise automatique** : relancer `python ingest.py` ne retraite pas les fichiers

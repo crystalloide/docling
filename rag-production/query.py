@@ -15,13 +15,20 @@ from config import (
 )
 
 # ── Prompt système RAG ─────────────────────────────────────────────────────
-SYSTEM_PROMPT = (
-    "Tu es un assistant expert en analyse de documents. "
-    "Réponds à la question en te basant UNIQUEMENT sur le contexte fourni. "
-    "Si la réponse ne figure pas dans le contexte, dis-le clairement. "
-    "Sois précis et concis."
-)
+# SYSTEM_PROMPT = (
+#     "Tu es un assistant expert en analyse de documents. "
+#     "Réponds à la question en te basant UNIQUEMENT sur le contexte fourni. "
+#     "Si la réponse ne figure pas dans le contexte, dis-le clairement. "
+#     "Sois précis et concis."
+# )
 
+SYSTEM_PROMPT = (
+    "Tu es un assistant expert en analyse documentaire. "
+    "Utilise les extraits fournis pour répondre de façon détaillée et structurée. "
+    "Tu es également expert en analyse de données. Le contexte contient parfois des tableaux au format Markdown. Analyse attentivement les lignes et colonnes pour répondre. Si les données proviennent d'un tableau, présente ta réponse de manière structurée."
+    "Si l'information est partiellement présente, fais une synthèse logique. "
+    "Cite toujours le nom du document source dans ta réponse."
+)
 
 # ── Initialisation ─────────────────────────────────────────────────────────
 def init_client():

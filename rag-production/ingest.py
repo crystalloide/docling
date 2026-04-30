@@ -75,7 +75,7 @@ def build_docling_converter():
         accel = AcceleratorOptions(device=AcceleratorDevice.CUDA)
         pipeline_opts = ThreadedPdfPipelineOptions(
             accelerator_options=accel,
-            do_ocr=False,
+            do_ocr=True,
             do_table_structure=True,
             layout_batch_size=4,
             table_batch_size=1,
@@ -86,7 +86,7 @@ def build_docling_converter():
         conv = DocumentConverter(
             format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_opts)}
         )
-        print("[Docling] ✅ GPU CUDA activé (OCR désactivé — PDFs texte natif)")
+        print("[Docling] ✅ GPU CUDA activé (OCR activé)")
         return conv
 
     except Exception as e:
