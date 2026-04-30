@@ -338,6 +338,17 @@ nvitop
 
 
 
+### ✅ Option 3 pour vérifier la charge pendant l'ingestion :
+```bash
+# Dans un terminal PowerShell :  
+nvidia-smi -l 1
+```
+
+##### Vous devriez voir le pourcentage de "Volatile GPU-Util" grimper bien au-delà des 10-20% habituels lors des phases d'extraction et d'embedding.  
+
+##### Si vous augmentez ces valeurs, surveillez bien la colonne Memory-Usage. Si vous approchez des 22-23 Go, baissez un peu le layout_batch_size.
+
+
 
 > **Reprise automatique** : relancer `python ingest.py` ne retraite pas les fichiers
 > deja indexes. Seuls les nouveaux PDFs sont traites.
