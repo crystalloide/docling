@@ -289,6 +289,10 @@ Arret propre si necessaire : `docker compose down`
 ## Etape 5 — Ingérer vos PDFs
 
 1. Copiez vos fichiers PDF dans `C:\rag-production\data\pdfs\`
+
+<img width="871" height="386" alt="image" src="https://github.com/user-attachments/assets/19784bbb-8259-458d-84e7-afc3fff15fd3" />
+
+   
 2. Lancez l'ingestion :
 
 ```powershell
