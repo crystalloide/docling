@@ -311,6 +311,8 @@ mkdir data\pdfs
 mkdir data\qdrant_storage
 ```
 
+#git clone https://github.com/crystalloide/docling
+
 Copiez tous les fichiers fournis dans `C:\rag-production\` :
 `docker-compose.yml`, `.env`, `config.py`, `requirements.txt`, `ingest.py`, `query.py`
 
