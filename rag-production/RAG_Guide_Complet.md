@@ -59,6 +59,28 @@ C:\rag-production\
 
 ## Etape 1 — Verifier les prerequis
 
+
+##### Clonage du projet : 
+```sh
+cd ~
+sudo rm -Rf docling
+
+git clone https://github.com/crystalloide/docling
+
+cd docling
+
+```
+    
+### Démarrage
+
+
+#### Lancer l'environnement docling et qdrant
+```bash
+docker compose -f docker-compose.yml up -d
+```
+
+
+
 ### 1.0 Docker Desktop 
 
 Lancer **Docker Desktop** et vérifier que des conteneurs sans lien avec le projet ne sont pas déjà en train de s'exécuter:
@@ -116,16 +138,21 @@ La preuve que la taille ne fait pas tout. Ce modèle est extrêmement optimisé.
 #### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen2.5
 
 ### On choisit celui-ci pour commencer : 
+
 ```powershell
 ollama run mistral-nemo:12b "Reponds juste : 'GPU OK'"
 ```
+
 ### La premiere fois : telecharge le modele (~7,1 Go)
 
-#ollama run llama3.1:8b "Reponds juste : GPU OK"
+```powershell
+ollama run llama3.1:8b "Reponds juste : GPU OK"
+```
+
 ### La premiere fois : telecharge le modele (~4.7 Go)
 
-### On choisit celui-ci pour commencer : 
-#ollama run qwen2.5:7b "Reponds juste : GPU OK"
+### Possibilité non retenue ici mais à tester si vous voulez  : 
+ollama run qwen2.5:7b "Reponds juste : GPU OK"
 ### La premiere fois : telecharge le modele (~4,7 Go)
 
 ### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
