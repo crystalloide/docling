@@ -183,8 +183,8 @@ mistral-nemo:12b    e7e06d107c6c    68 GB    70%/30% CPU/GPU    262144     4 min
 Pour confirmer avec ton GPU NVIDIA (RTX avec 24 Go de VRAM), surveille la charge GPU en temps réel pendant une inférence  :[^3]
 
 ```powershell
-# Affichage en continu toutes les 500ms
-nvidia-smi dmon -s u -d 0.5
+# Affichage en continu toutes les secondes
+nvidia-smi dmon -s u -d 1
 ```
 
 Ou en mode watch :
