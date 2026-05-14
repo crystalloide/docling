@@ -144,7 +144,6 @@ ollama --version
 ```text
 # Affichage attendu en retour : 
 
-Warning: could not connect to a running Ollama instance
 Warning: client version is 0.21.2
 ```
 
