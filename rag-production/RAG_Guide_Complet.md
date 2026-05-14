@@ -508,6 +508,8 @@ nvidia-smi --query-gpu=timestamp,name,utilization.gpu,utilization.memory,memory.
 
 ##### htop pour GPU, très lisible dans le terminal :
 ```bash
+cd C:\rag-production
+.venv\Scripts\Activate.ps1
 pip install nvitop
 nvitop
 ```
