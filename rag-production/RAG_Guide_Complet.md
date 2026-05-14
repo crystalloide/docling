@@ -193,32 +193,36 @@ Get-Content "$env:LOCALAPPDATA\Ollama\server.log" -Tail 50
 ```
 
 Cherche des lignes comme `CUDA detected` ou `no compatible GPUs were discovered`.
-### On choisit celui-ci pour commencer : 
 
+___
+#### On choisit mistral-nemo:12b pour commencer : 
+#### La premiere fois : telecharge le modele (~7,1 Go)
 ```powershell
 ollama run mistral-nemo:12b "Reponds juste : 'GPU OK'"
 ```
-
-### La premiere fois : telecharge le modele (~7,1 Go)
-
+___
+#### Possibilité 2 non retenue ici mais à tester si vous voulez  : modèle (~4.7 Go)
 ```powershell
 ollama run llama3.1:8b "Reponds juste : GPU OK"
 ```
-
-### La premiere fois : telecharge le modele (~4.7 Go)
-
-### Possibilité non retenue ici mais à tester si vous voulez  : 
+___
+#### Possibilité 3 non retenue ici mais à tester si vous voulez  : modele (~4,7 Go)
+#### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
+```powershell
 ollama run qwen2.5:7b "Reponds juste : GPU OK"
-### La premiere fois : telecharge le modele (~4,7 Go)
-
-### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen3.5
-#ollama run qwen3.5:9b "Reponds juste : GPU OK"
-### La premiere fois : telecharge le modele (~6,6 Go)
-
-#ollama run qwen3.5:27b "Reponds juste : GPU OK"
-### La premiere fois : telecharge le modele (~17 Go)
+```
+___
+#### Possibilité 4 non retenue ici mais à tester si vous voulez  : modèle (~6,6 Go)
+```powershell
+ollama run qwen3.5:9b "Reponds juste : GPU OK"
+```
+___
+#### Possibilité 5 non retenue ici mais à tester si vous voulez  : modèle (~17 Go)
+```powershell
+ollama run qwen3.5:27b "Reponds juste : GPU OK"
 ```
 
+___
 #### 1.2 Docker Desktop + GPU NVIDIA
 
 ```powershell
