@@ -57,7 +57,7 @@ C:\rag-production\
 
 ---
 
-## Etape 1 — Verifier les prerequis
+### Etape 1 — Verifier les prerequis
 
 
 ##### Clonage du projet : 
@@ -128,7 +128,7 @@ Lancer **Docker Desktop** et vérifier que des conteneurs sans lien avec le proj
 
 Ouvrez un **terminal PowerShell** :
 
-## Étape 1 — Démarrer Ollama
+### Étape 1 — Démarrer Ollama
 
 Lance Ollama via l'application Windows (icône dans la barre des tâches) ou via PowerShell :
 
@@ -173,7 +173,7 @@ La colonne `PROCESSOR` indique clairement l'utilisation  :[^2]
 | `100% CPU` | Pas de GPU utilisé |
 | `48% GPU / 52% CPU` | Split VRAM + RAM système |
 
-## Étape 3 — Vérifier avec `nvidia-smi`
+### Étape 3 — Vérifier avec `nvidia-smi`
 
 Pour confirmer avec ton GPU NVIDIA (RTX avec 24 Go de VRAM), surveille la charge GPU en temps réel pendant une inférence  :[^3]
 
@@ -190,7 +190,7 @@ watch -n 1 nvidia-smi
 
 La colonne `GPU-Util` doit monter à plusieurs dizaines de % si le GPU est actif.
 
-## Étape 4 — Lire les logs Ollama
+### Étape 4 — Lire les logs Ollama
 
 Les logs indiquent explicitement si un GPU compatible est détecté. Sur Windows, les logs sont accessibles via :[^4]
 
