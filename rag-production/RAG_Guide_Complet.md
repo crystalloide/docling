@@ -143,8 +143,7 @@ ollama --version
 
 ```text
 # Affichage attendu en retour : 
-
-Warning: client version is 0.21.2
+ollama version is 0.21.2
 ```
 
 ##### Testez que le GPU est utilisé :
