@@ -74,7 +74,7 @@ cd docling
 ### Démarrage
 
 
-#### Lancer l'environnement docling et qdrant
+#### Lancer l'environnement qdrant
 ```bash
 docker compose -f docker-compose.yml up -d
 ```
