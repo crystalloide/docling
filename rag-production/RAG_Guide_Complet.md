@@ -146,6 +146,13 @@ ollama --version
 ollama version is 0.21.2
 ```
 
+___
+#### On choisit mistral-nemo:12b pour commencer : 
+#### La premiere fois : telecharge le modele (~7,1 Go)
+```powershell
+ollama run mistral-nemo:12b "Reponds juste : 'GPU OK'"
+```
+
 ##### Testez que le GPU est utilisé :
 
 
@@ -194,12 +201,6 @@ Get-Content "$env:LOCALAPPDATA\Ollama\server.log" -Tail 50
 
 Cherche des lignes comme `CUDA detected` ou `no compatible GPUs were discovered`.
 
-___
-#### On choisit mistral-nemo:12b pour commencer : 
-#### La premiere fois : telecharge le modele (~7,1 Go)
-```powershell
-ollama run mistral-nemo:12b "Reponds juste : 'GPU OK'"
-```
 ___
 #### Possibilité 2 non retenue ici mais à tester si vous voulez  : modèle (~4.7 Go)
 ```powershell
