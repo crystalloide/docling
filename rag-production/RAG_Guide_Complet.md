@@ -81,24 +81,6 @@ docker compose -f docker-compose.yml up -d
 
 
 
-### 1.0 Docker Desktop 
-
-Lancer **Docker Desktop** et vérifier que des conteneurs sans lien avec le projet ne sont pas déjà en train de s'exécuter:
-
-### 1.1 Ollama + GPU
-
-Ouvrez un **terminal PowerShell** :
-
-```powershell
-ollama --version
-```
-
-Testez que le GPU est utilisé :
-
-```powershell
-
-```
-
 ## Comparatif des Modèles Équivalents à Llama 3.1 8B
 
 Ce document présente une analyse comparative des principaux Large Language Models (LLM) de taille moyenne qui rivalisent avec le Llama 3.1 8B de Meta.
@@ -117,7 +99,7 @@ Ce document présente une analyse comparative des principaux Large Language Mode
 
 ---
 
-## Analyse par Modèle
+## Analyse par modèle LLM :
 
 ### 1. Llama 3.1 8B (Meta)
 Le standard actuel. Il bénéficie de l'écosystème le plus vaste (compatible avec presque tous les outils comme Ollama, LM Studio, etc.). Sa fenêtre de contexte de 128k est un atout majeur pour traiter de longs documents.
@@ -137,6 +119,82 @@ La preuve que la taille ne fait pas tout. Ce modèle est extrêmement optimisé.
 
 #### Voir ici les modèles et tailles disponibles : https://ollama.com/library/qwen2.5
 
+
+### 1.0 Docker Desktop 
+
+Lancer **Docker Desktop** et vérifier que des conteneurs sans lien avec le projet ne sont pas déjà en train de s'exécuter:
+
+### 1.1 Ollama + GPU
+
+Ouvrez un **terminal PowerShell** :
+
+## Étape 1 — Démarrer Ollama
+
+Lance Ollama via l'application Windows (icône dans la barre des tâches) ou via PowerShell :
+
+```powershell
+ollama serve
+```
+
+Attends les messages de démarrage, notamment la ligne confirmant la détection du GPU.
+```powershell
+ollama --version
+```
+
+```text
+# Affichage attendu en retour : 
+
+Warning: could not connect to a running Ollama instance
+Warning: client version is 0.21.2
+```
+
+##### Testez que le GPU est utilisé :
+
+
+## Étape 2 — Vérifier le GPU avec `ollama ps`
+
+C'est la méthode la plus directe. Pendant qu'un modèle tourne, exécute dans un **second terminal** :[^2]
+
+```powershell
+ollama ps
+```
+
+La colonne `PROCESSOR` indique clairement l'utilisation  :[^2]
+
+
+| Valeur `PROCESSOR` | Signification |
+| :-- | :-- |
+| `100% GPU` | Modèle entièrement en VRAM |
+| `100% CPU` | Pas de GPU utilisé |
+| `48% GPU / 52% CPU` | Split VRAM + RAM système |
+
+## Étape 3 — Vérifier avec `nvidia-smi`
+
+Pour confirmer avec ton GPU NVIDIA (RTX avec 24 Go de VRAM), surveille la charge GPU en temps réel pendant une inférence  :[^3]
+
+```powershell
+# Affichage en continu toutes les 500ms
+nvidia-smi dmon -s u -d 0.5
+```
+
+Ou en mode watch :
+
+```powershell
+watch -n 1 nvidia-smi
+```
+
+La colonne `GPU-Util` doit monter à plusieurs dizaines de % si le GPU est actif.
+
+## Étape 4 — Lire les logs Ollama
+
+Les logs indiquent explicitement si un GPU compatible est détecté. Sur Windows, les logs sont accessibles via :[^4]
+
+```powershell
+# Chemin typique des logs Ollama sur Windows
+Get-Content "$env:LOCALAPPDATA\Ollama\server.log" -Tail 50
+```
+
+Cherche des lignes comme `CUDA detected` ou `no compatible GPUs were discovered`.
 ### On choisit celui-ci pour commencer : 
 
 ```powershell
