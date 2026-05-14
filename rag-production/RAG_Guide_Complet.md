@@ -173,6 +173,11 @@ La colonne `PROCESSOR` indique clairement l'utilisation  :[^2]
 | `100% CPU` | Pas de GPU utilisé |
 | `48% GPU / 52% CPU` | Split VRAM + RAM système |
 
+```affichage
+NAME                ID              SIZE     PROCESSOR          CONTEXT    UNTIL
+mistral-nemo:12b    e7e06d107c6c    68 GB    70%/30% CPU/GPU    262144     4 minutes from now
+```
+
 ### Étape 3 — Vérifier avec `nvidia-smi`
 
 Pour confirmer avec ton GPU NVIDIA (RTX avec 24 Go de VRAM), surveille la charge GPU en temps réel pendant une inférence  :[^3]
