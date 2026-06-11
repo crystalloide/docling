@@ -211,8 +211,8 @@ ollama list
 ### 3.1 Creer la structure
 
 ```powershell
-mkdir C:\rag-production
-cd C:\rag-production
+mkdir C:\rag-production-v2
+cd C:\rag-production-v2
 mkdir data\pdfs
 mkdir data\qdrant_storage
 ```
@@ -223,7 +223,7 @@ Copiez tous les fichiers fournis dans `C:\rag-production\` :
 ### 3.2 Environnement virtuel Python
 
 ```powershell
-cd C:\rag-production
+cd C:\rag-production-v2
 
 python -m venv .venv
 
@@ -270,7 +270,7 @@ pip install -r requirements.txt
 ## Etape 4 — Demarrer Qdrant
 
 ```powershell
-cd C:\rag-production
+cd C:\rag-production-v2
 
 docker compose up -d
 
@@ -302,7 +302,7 @@ Arret propre si necessaire : `docker compose down`
 2. Lancez l'ingestion :
 
 ```powershell
-cd C:\rag-production
+cd C:\rag-production-v2
 .venv\Scripts\Activate.ps1
 python -u ingest.py
 ```
@@ -388,7 +388,7 @@ http://localhost:6333/collections/prod_documents
 ```text
 les fichiers qdrant sont stockés dans le dossier que vous avez monté comme volume Docker :
 
-C:\rag-production\data\qdrant_storage\
+C:\rag-production-v2\data\qdrant_storage\
 ```
 
 ```bash
@@ -438,7 +438,7 @@ nvidia-smi -l 1
 ## Etape 6 — Interroger vos documents
 
 ```powershell
-cd C:\rag-production
+cd C:\rag-production-v2
 .venv\Scripts\Activate.ps1
 python query.py
 ```
@@ -535,7 +535,7 @@ Le fichier `.env` est le **seul point de configuration**. Aucun script a modifie
 ## Etape 8 — Vérifier l'indexation 
 
 ```powershell
-cd C:\rag-production
+cd C:\rag-production-v2
 .venv\Scripts\Activate.ps1
 python check_index.py
 ```
