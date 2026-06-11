@@ -43,7 +43,7 @@ PDFs (data/pdfs/)
 ## Structure du projet
 
 ```
-C:\rag-production\
+C:\rag-production-v2\
 ├── docker-compose.yml      <- Qdrant container (pret a l'emploi)
 ├── .env                    <- Seul fichier de configuration
 ├── config.py               <- Chargement .env (ne pas modifier)
