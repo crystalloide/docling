@@ -134,7 +134,6 @@ ollama run mistral-nemo:12b "Reponds juste : 'GPU OK'"
 
 #ollama run qwen3.5:27b "Reponds juste : GPU OK"
 ### La premiere fois : telecharge le modele (~17 Go)
-```
 
 #### 1.2 Docker Desktop + GPU NVIDIA
 
